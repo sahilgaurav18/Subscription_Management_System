@@ -1,0 +1,17 @@
+{
+  "subscriptions": {
+    "draft": ["quotation"],
+    "quotation": ["confirmed", "closed"],
+    "confirmed": ["active", "closed"],
+    "active": ["paused", "closed"],
+    "paused": ["active", "closed"],
+    "closed": ["renew"]
+  },
+  "invoices": {
+    "draft": ["confirmed", "cancelled"],
+    "confirmed": ["paid", "cancelled"],
+    "paid": [],
+    "cancelled": []
+  }
+}
+

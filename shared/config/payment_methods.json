@@ -1,0 +1,10 @@
+{
+  "methods": [
+    { "id": "credit_card", "label": "Credit Card" },
+    { "id": "bank_transfer", "label": "Bank Wire Transfer" },
+    { "id": "stripe", "label": "Stripe" },
+    { "id": "manual", "label": "Manual / Check" },
+    { "id": "cash", "label": "Cash" }
+  ]
+}
+

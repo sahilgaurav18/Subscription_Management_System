@@ -1,0 +1,9 @@
+{
+  "periods": [
+    { "id": "daily", "label": "Daily", "days": 1 },
+    { "id": "weekly", "label": "Weekly", "days": 7 },
+    { "id": "monthly", "label": "Monthly", "days": 30 },
+    { "id": "yearly", "label": "Yearly", "days": 365 }
+  ]
+}
+

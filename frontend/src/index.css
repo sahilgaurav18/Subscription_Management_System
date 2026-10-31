@@ -1,0 +1,403 @@
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/caveat/600.css";
+@import "@fontsource/caveat/700.css";
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-caveat: 'Caveat', cursive, sans-serif;
+
+  /* Modern ERP Plum Palette */
+  --color-primary: #6B4A6B;
+  --color-primary-hover: #593B59;
+  --color-primary-soft: #F1EAF1;
+
+  /* Playful Doodle Accents */
+  --color-doodle-amber: #F5A623;
+  --color-doodle-teal: #12C2A5;
+  --color-doodle-coral: #F26B6B;
+  --color-doodle-sky: #2BB3F3;
+
+  /* Sidebar Tokens */
+  --color-sidebar-bg: #2E2330;
+  --color-sidebar-text: #D9CFDA;
+  --color-sidebar-active: #6B4A6B;
+
+  /* Page & Card Surfaces */
+  --color-page-bg: #FFFFFF;
+  --color-page-alt: #F4F3F6;
+  --color-card-bg: #FFFFFF;
+  --color-border: #E3DFE5;
+
+  /* Typography Text Tokens */
+  --color-text: #1F1A21;
+  --color-muted-text: #6D6572;
+
+  /* Status Colors */
+  --color-status-success: #1E8E5A;
+  --color-status-warning: #B7791F;
+  --color-status-danger: #C0392B;
+  --color-status-info: #2B6CB0;
+  --color-status-neutral: #6D6572;
+}
+
+::selection {
+  background-color: #F1EAF1;
+  color: #6B4A6B;
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #1F1A21;
+    background-color: #FFFFFF;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #FFFFFF;
+    color: #1F1A21;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* Accessible focus indicators with AA contrast */
+  :focus-visible {
+    outline: 2px solid #6B4A6B;
+    outline-offset: 2px;
+  }
+
+  /* Numerical tabular values for tables and cards */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.font-caveat {
+  font-family: 'Caveat', cursive, sans-serif;
+}
+
+/* Typography Scale Classes */
+.text-hero {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #1F1A21;
+}
+
+.text-page-title {
+  font-size: 24px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #1F1A21;
+}
+
+.text-section-title {
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #1F1A21;
+}
+
+.text-body {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #1F1A21;
+}
+
+.text-table {
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #1F1A21;
+}
+
+.text-label {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #6D6572;
+}
+
+.text-bento-number {
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: #1F1A21;
+}
+
+/* Card Surface Standard (8px radius, 1px border, 24px padding, 0 1px 2px rgba(0,0,0,0.04) shadow) */
+.erp-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E3DFE5;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Bento Tile Surface Standard (16px radius, 1px border, 24px padding, lifts 2px on hover) */
+.bento-tile {
+  background-color: #FFFFFF;
+  border: 1px solid #E3DFE5;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bento-tile:hover {
+    transform: translateY(-2px);
+  }
+
+  .fade-up {
+    animation: fadeUp 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Tables: No shadow on tables, border collapse, row hover */
+table {
+  box-shadow: none !important;
+}
+
+/* Button Standards (min height 36px, visible focus, clear feedback) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 8px 16px;
+  background-color: #6B4A6B;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: background-color 150ms ease, border-color 150ms ease;
+  cursor: pointer;
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: #593B59;
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 8px 16px;
+  background-color: #FFFFFF;
+  color: #1F1A21;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid #E3DFE5;
+  transition: background-color 150ms ease, border-color 150ms ease;
+  cursor: pointer;
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: #F1EAF1;
+  border-color: #6B4A6B;
+}
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 8px 16px;
+  background-color: #FFFFFF;
+  color: #C0392B;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid #E3DFE5;
+  transition: all 150ms ease;
+  cursor: pointer;
+}
+.btn-danger:hover:not(:disabled) {
+  background-color: #FDF2F2;
+  border-color: #C0392B;
+}
+.btn-danger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form Field Inputs */
+.erp-input {
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 12px;
+  background-color: #FFFFFF;
+  border: 1px solid #E3DFE5;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #1F1A21;
+  transition: border-color 150ms ease;
+}
+.erp-input:focus {
+  outline: none;
+  border-color: #6B4A6B;
+  box-shadow: 0 0 0 1px #6B4A6B;
+}
+.erp-input:disabled {
+  background-color: #F6F5F7;
+  color: #6D6572;
+  cursor: not-allowed;
+}
+
+.erp-select {
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 12px;
+  background-color: #FFFFFF;
+  border: 1px solid #E3DFE5;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #1F1A21;
+  transition: border-color 150ms ease;
+}
+.erp-select:focus {
+  outline: none;
+  border-color: #6B4A6B;
+  box-shadow: 0 0 0 1px #6B4A6B;
+}
+
+/* Doodle Animations & Wiggles */
+@keyframes doodleWiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-6deg);
+  }
+  75% {
+    transform: rotate(6deg);
+  }
+}
+
+.group:hover .doodle-wiggle,
+.doodle-wiggle:hover {
+  animation: doodleWiggle 400ms ease-in-out;
+}
+
+@keyframes drawStroke {
+  from {
+    stroke-dashoffset: 120;
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.animate-draw-stroke {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 0;
+  animation: drawStroke 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(0.96);
+  }
+}
+
+.animate-pulse-gentle {
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+/* Marker Brush Draw-in */
+@keyframes markerDraw {
+  from {
+    stroke-dashoffset: 400;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-marker-draw {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 0;
+  animation: markerDraw 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Floating bob for module tiles */
+@keyframes gentleBob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bob {
+  animation: gentleBob 3.5s ease-in-out infinite;
+}
+
+/* Confetti particle physics */
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx, 30px), var(--ty, 120px)) rotate(var(--tr, 360deg)) scale(0.6);
+  }
+}
+
+.animate-confetti {
+  animation: confettiFall 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Disable all motion under prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
